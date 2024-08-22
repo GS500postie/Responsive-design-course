@@ -1,0 +1,26 @@
+@use 'sass:math';
+
+// font-size: rem(30)  This is how you enter the info for the function
+//throw an error if the parameter has a unit. (finding a way to debug as we go alomg instead of having to search for bugs)
+@function rem($pixel) {
+  //if $pixel has a unit, throw an error
+  @if math.is-unitless($pixel) {
+    @return math.div($pixel, 16) + rem; //I think this takes the result and prints or assigns it to rems
+  } @else {
+    // @if type-of($pixel) == 'number' and unit($pixel) {
+    //  @error "Unit '#{unit($pixel)}' is not allowed for rem unit conversion.";   (check out how different this one thrown up by the ai)
+    // }
+
+    //if $pixel is not a number, throw an error
+    //(scss variables need to be prefixed by $)
+    //divide $pixel by 16 to achieve rem unit
+    @error 'Do not use units when using the rem() function, only numbers you idiot';
+  }
+}
+@function em($pixel) {
+  @if math.is-unitless($pixel) {
+    @return math.div($pixel, 16) + em;
+  } @else {
+    @error 'Do not use units when using the rem() function, only numbers you idiot';
+  }
+}
