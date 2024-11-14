@@ -1,5 +1,5 @@
 @use '../util' as u;
-
+//we need to load the util folder into the grid.scss file, as above.
 .grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -12,6 +12,7 @@
   //   margin-top: 40px;
 
   @include u.breakpoint(large) {
+    //here we use @include as a path to the code in the util folder
     grid-template-columns: 2fr 1fr;
     grid-template-rows: auto;
   }
@@ -23,6 +24,8 @@
   &__main {
     background-color: hsl(240, 97%, 36%);
   }
+  //this is where we are using the sass map in 'breakpoints.scss'. Note the nesting
+  //see how we are centering the text in medium but right aligning on small screens. This is really clever and neat
   &__sidebar {
     @include u.breakpoint-down(medium) {
       text-align: center;
@@ -34,7 +37,6 @@
   }
 
   &__widget {
-    background-color: hsl(300, 100%, 23%);
     padding: u.rem(16);
   }
 }

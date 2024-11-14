@@ -1,9 +1,10 @@
 @use 'sass:math';
 
 // font-size: rem(30)  This is how you enter the info for the function
-//throw an error if the parameter has a unit. (finding a way to debug as we go alomg instead of having to search for bugs)
+//throw an error if the parameter has a unit. (finding a way to debug as we go along instead of having to search for bugs)
 @function rem($pixel) {
   //if $pixel has a unit, throw an error
+  //below the syntax means 'divide pixel by 16'
   @if math.is-unitless($pixel) {
     @return math.div($pixel, 16) + rem; //I think this takes the result and prints or assigns it to rems
   } @else {

@@ -1,17 +1,19 @@
 @use 'functions' as f;
 
+//this is all in 'using max-width and media queries'
+
 //700px mobiles, 900px tablets, 1440px lge monitors
 //we are using something called 'sass map' here. Sass map is a built in sass function that comes out of the box
 //sass map saves data in key/value pairs, much like a javascript object
-//we are setting widths here. The three parameters above will be assigned 'small, 'medium', and 'large', and 'x-large'
-//we are going to use 'em' units instead of pixels. and em unit is usually 16 px, so in this case 700px= 43.75em
+//we are setting widths here. The three parameters above will be assigned 'medium', 'large', and 'x-large'
+//we are going to use 'em' units instead of pixels. an em unit is usually 16 px, so in this case 700px= 43.75em
 $breakpoints-up: (
   'medium': f.em(700),
   'large': f.em(900),
   'xlarge': f.em(1440),
 );
 
-//breakpoints down 699.98px, 899.98px, 1439.98px. Something to do with bootstrap
+//breakpoints down 699.98px, 899.98px, 1439.98px. Something to do with bootstrap. the 0.02 stands for something, so consider it when writing stuff like this
 //below is a sass map. You can see how it relates to the mixin with the 'map-get' command.
 //the '$size' call is selecting from the size options listed in the map. Don't know how they define the variable though
 
@@ -22,6 +24,7 @@ $breakpoints-down: (
 );
 
 @mixin breakpoint($size) {
+  //the 'size' call is added as a function, then called in the code depending on the size. Keeping things tidy
   @media (min-width: map-get($breakpoints-up, $size)) {
     @content;
   }
